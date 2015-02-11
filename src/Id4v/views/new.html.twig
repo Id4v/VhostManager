@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Ajouter un Vhost</h2>
+        </div>
+        <div class="row">
+            <form action="" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label for="name">
+                        Type
+                    </label>
+                    <select name="vhost[type]" class="form-control">
+                        <option value="Sf2">Symfony2</option>
+                        <option value="Sf1">Symfony1</option>
+                        <option value="">Basic</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">
+                        Nom
+                    </label>
+                    <input id="name" type="text" class="form-control" name="vhost[name]" value="{{ vhost.name }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="url">
+                        Url
+                    </label>
+                    <input id="url" type="text" class="form-control" name="vhost[url]" value="{{ vhost.url }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="path">
+                        Chemin du projet
+                    </label>
+                    <input type="text" class="form-control" name="vhost[path]" value="{{ vhost.path }}"/>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        document.forms[0].elements[1].onchange=function(){
+            document.getElementById("url").value=this.value+".dav";
+        }
+    </script>
+{% endblock %}

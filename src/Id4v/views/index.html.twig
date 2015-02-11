@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10"><h2>Liste des VirtualHosts</h2></div>
+            <div class="col-lg-2">
+                <a class="pull-right btn btn-success" href="/create">Nouveau</a>
+            </div>
+        </div>
+        <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Url</th>
+                    <th>Chemin</th>
+                    <th>Etat</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vhost in vhosts %}
+                    {% if vhost.exists  %}
+                        {% set status = "success" %}
+                    {% else %}
+                        {% set status = "danger" %}
+                    {% endif %}
+                    <tr>
+                        <td>{{ vhost.name }}</td>
+                        <td>
+                            <a href="http://{{ vhost.url }}" target="_blank">{{ vhost.url }}</a>
+                        </td>
+                        <td>{{ vhost.path }}</td>
+                        <td>
+                            {% if status == "success" %}
+                                <span class="glyphicon glyphicon-ok text-success"></span>
+                                {% else %}
+                                <span class="glyphicon glyphicon-remove text-danger"></span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/vhosts/edit/{{ vhost.getId }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                Edit
+                            </a>
+                            <br/>
+                            <a href="/vhosts/ignore/{{ vhost.getId }}">
+                                <i class="glyphicon glyphicon-exclamation-sign"></i>
+                                Ignorer
+                            </a>
+                            <br/>
+                            {% if not vhost.isProtected %}
+                            <a href="/vhosts/delete/{{ vhost.getId }}">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                Delete
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock %}

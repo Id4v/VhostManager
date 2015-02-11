@@ -1,0 +1,5 @@
+basepath: /etc/apache2/vhosts/
+ignore:
+    - _default-vhosts.conf
+    - phpmyadmin.conf
+

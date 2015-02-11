@@ -1,0 +1,31 @@
+routes:
+  homepage:
+    url: "/"
+    controller: "Id4v\Controllers\FrontController"
+    action: "index"
+
+  settings:
+    url: "/settings"
+    controller: "Id4v\Controllers\FrontController"
+    action: "settings"
+    methods: "GET|POST"
+
+  create_vhosts:
+    url: "/create"
+    controller: "Id4v\Controllers\FrontController"
+    action: "create"
+    methods: "GET|POST"
+
+  ignore_vhosts:
+        url: "/vhosts/ignore/{hash}"
+        controller: "Id4v\Controllers\FrontController"
+        action: "ignore"
+  edit_vhosts:
+      url: "/vhosts/edit/{hash}"
+      controller: "Id4v\Controllers\FrontController"
+      action: "edit"
+      methods: "GET|POST"
+  delete_vhosts:
+        url: "/vhosts/delete/{hash}"
+        controller: "Id4v\Controllers\FrontController"
+        action: "delete"

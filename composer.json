@@ -1,0 +1,19 @@
+{
+    "name": "id4v/silex",
+    "description": "TestingSilex",
+    "autoload": {
+        "psr-0": {"":"src/"}
+    },
+    "authors": [
+        {
+            "name": "David Rimbault",
+            "email": "rimbault.david@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "1.2.*",
+        "symfony/yaml": "2.6.*",
+        "deralex/yaml-config-service-provider": "1.0.*",
+        "twig/twig": "1.9.*"
+    }
+}
